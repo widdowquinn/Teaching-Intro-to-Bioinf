@@ -136,10 +136,54 @@ $ blastp -query query.fasta -db dbA -out my_output.txt -evalue 1e-5
 
 \section*{Part 3: Genome Annotation Workshop}
 
+\subsection*{Gene Prediction}
+
 \begin{lstlisting}[language=bash]
 $ cd ~/introToBioinformatics/data/workshop/
 $ ls *.fasta
 chrA.fasta      chrB.fasta      chrC.fasta      chrD.fasta
+$ head -n 3 chrA.fasta
+$ head -n 3 chrA_contigs.gff
 \end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ art &
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ build-icm -r NC_004547.icm < NC_004547.ffn
+$ glimmer3 -o 50 -g 110 -t 30 chrA.fasta NC_004547.icm chrA_glimmer3
+$ head -n 4 chrA_glimmer3.predict
+$ python glimmer_to_gff.py chrA_glimmer3.predict
+$ head -n 3 chrA_glimmer3.gff
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ prodigal -f gff -o chrA_prodigal.gff -i chrA.fasta
+$ head -n 6 chrA_prodigal.gff
+\end{lstlisting}
+
+\subsection*{Genome Comparison}
+
+\begin{lstlisting}[language=bash]
+$ blastn -query chrA.fasta -subject NC_004547.fna -out chrA_megablast_Pba.tab -outfmt 6
+$ head -n 3 chrA_megablast_Pba.tab
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ blastn -query chrA.fasta -subject NC_004547.fna -out chrA_blastn_Pba.tab -outfmt 6 -task blastn
+$ head -n 3 chrA_blastn_Pba.tab
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ wc chrA_megablast_Pba.tab
+$ wc chrA_blastn_Pba.tab
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ act &
+\end{lstlisting}
+
+%MUMmer ...
 
 \end{document}
