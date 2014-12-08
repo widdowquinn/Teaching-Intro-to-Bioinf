@@ -1,8 +1,11 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 
+\usepackage{fullpage} % for smaller margins
 \usepackage{listings}
 \usepackage{multirow}
 \usepackage{xcolor}
+
+\setlength{\parindent}{0pt} % indenting the paragraphs looks silly here
 
 % LISTINGS SETTING
 \definecolor{hutton_lightgreen}{HTML}{C8F27F}
@@ -31,16 +34,31 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{violet},     % string literal style
-  tabsize=4,                       % sets default tabsize to 2 spaces
+  tabsize=4,                       % sets default tabsize to 4 spaces
   title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
 \begin{document}
 
-\section{Exercise 1}
+\section*{Introduction To Bioinformatics -- Afternoon session}
+
+You should have already created a copy of the data files under your home directory (tilde shorthand):
+\begin{lstlisting}[language=bash]
+$ cp -r /mnt/shared/public/training/introToBioinformatics/ ~/
+\end{lstlisting}
+
+Check the afternoon files exist with:
+\begin{lstlisting}[language=bash]
+$ ls ~/introToBioinformatics/data/
+ex1_expression  ex2_blast  workshop
+\end{lstlisting}
+
+\section*{Part 1: Golden Rules of Bioinformatics}
+
+\subsection*{Exercise 1 -- Expression data in R}
 
 \begin{lstlisting}[language=bash]
-$ cd ../../data/ex1_expression/
+$ cd ~/introToBioinformatics/data/ex1_expression/
 $ R
 \end{lstlisting}
 
@@ -66,36 +84,62 @@ $ R
 > cor(data)[1:4,5:8]
 \end{lstlisting}
 
-\section{Exercise 2}
+\subsection*{Exercise 2 -- BLAST+ at the command line}
 
 \begin{lstlisting}[language=bash]
+$ script
+Script started, output file is typescript
 $ cd ../ex2_blast
 $ blastp -num_alignments 1 -num_descriptions 1 -query query.fasta -db dbA
 $ exit
 exit
 Script done, output file is typescript
-\end{lstlisting} 
+\end{lstlisting}
 
 \begin{lstlisting}[language=bash]
 $ cat typescript
 Script started on Fri May  9 10:45:12 2014
 lpritc@lpmacpro:$ cd ../ex2_blast
 [...]
-\end{lstlisting}   
+\end{lstlisting}
+
+\section*{Part 2: BLAST}
+
+\subsection*{BLAST+ at the command line}
+
+Built in help:
 
 \begin{lstlisting}[language=bash]
-$ cd ../ex2_blast
-$ blastp -num_alignments 1 -num_descriptions 1 -query query.fasta -db dbA
-$ exit
-exit
-Script done, output file is typescript
-\end{lstlisting}    
+$ blastp -h
+...
+\end{lstlisting}
+
+Minimal example:
 
 \begin{lstlisting}[language=bash]
-$ cat typescript
-Script started on Fri May  9 10:45:12 2014
-lpritc@lpmacpro:$ cd ../ex2_blast
-[...]
-\end{lstlisting}   
+$ blastp -query query.fasta -db dbA -out my_output.txt
+\end{lstlisting}
+
+Changing the output format:
+
+\begin{lstlisting}[language=bash]
+$ blastp -query query.fasta -db dbA -out my_output.txt
+$ blastp -query query.fasta -db dbA -out my_output.xml -outfmt 5
+$ blastp -query query.fasta -db dbA -out my_output.tab -outfmt 6
+\end{lstlisting}
+
+Setting the e-value threshold:
+
+\begin{lstlisting}[language=bash]
+$ blastp -query query.fasta -db dbA -out my_output.txt -evalue 1e-5
+\end{lstlisting}
+
+\section*{Part 3: Genome Annotation Workshop}
+
+\begin{lstlisting}[language=bash]
+$ cd ~/introToBioinformatics/data/workshop/
+$ ls *.fasta
+chrA.fasta      chrB.fasta      chrC.fasta      chrD.fasta
+\end{lstlisting}
 
 \end{document}
