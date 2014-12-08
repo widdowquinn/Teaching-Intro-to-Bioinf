@@ -163,7 +163,7 @@ $ prodigal -f gff -o chrA_prodigal.gff -i chrA.fasta
 $ head -n 6 chrA_prodigal.gff
 \end{lstlisting}
 
-\subsection*{Genome Comparison}
+\subsection*{Genome Comparison (with BLAST+)}
 
 \begin{lstlisting}[language=bash]
 $ blastn -query chrA.fasta -subject NC_004547.fna -out chrA_megablast_Pba.tab -outfmt 6
@@ -184,6 +184,23 @@ $ wc chrA_blastn_Pba.tab
 $ act &
 \end{lstlisting}
 
-%MUMmer ...
+\subsection*{Genome Comparison (with MUMmer)}
+
+\begin{lstlisting}[language=bash]
+$ cd ~/introToBioinformatics/data/workshop
+$ mkdir nucmer_out
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ nucmer --prefix=nucmer_out/chrA_NC_004547 chrA.fasta NC_004547.fna
+$ delta-filter -q nucmer_out/chrA_NC_004547.delta > nucmer_out/chrA_NC_004547.filter
+$ show-coords -rcl nucmer_out/chrA_NC_004547.filter > nucmer_out/chrA_NC_004547_filtered.coords
+$ head nucmer_out/chrA_NC_004547_filtered.coords
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ tail -n +6 nucmer_out/chrA_NC_004547_filtered.coords | awk '{print $7" "$10" "$1" "$2" "$12" "$4" "$5" "$13}' > chrA_mummer_NC_004547.crunch
+$ head chrA_mummer_NC_004547.crunch
+\end{lstlisting}
 
 \end{document}
