@@ -43,14 +43,15 @@
 
 \begin{document}
 
-\section*{Introduction To Bioinformatics -- Afternoon session}
+\section*{Introduction To Bioinformatics -- Command summary}
 
-You should have already created a copy of the data files under your home directory (tilde shorthand):
+This sheet is just a summary of the commands you will be running, which are described in the slides.
+You should have already created a copy of the data files under your home directory (shorthand tilde):
 \begin{lstlisting}[language=bash]
 $ cp -r /mnt/shared/public/training/introToBioinformatics/ ~/
 \end{lstlisting}
 
-Check the afternoon files exist with:
+Check the session's files exist with:
 \begin{lstlisting}[language=bash]
 $ ls ~/introToBioinformatics/data/
 ex1_expression  ex2_blast  workshop
@@ -117,9 +118,12 @@ $ blastp -h
 ...
 \end{lstlisting}
 
+\pagebreak
+
 Minimal example:
 
 \begin{lstlisting}[language=bash]
+$ cd ~/introToBioinformatics/data/ex2_blast/
 $ blastp -query query.fasta -db dbA -out my_output.txt
 \end{lstlisting}
 
