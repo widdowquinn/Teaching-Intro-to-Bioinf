@@ -1,10 +1,11 @@
 \documentclass[a4paper]{article}
 
-\usepackage{fullpage} % for smaller margins
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{listings}
 \usepackage{multirow}
 \usepackage{xcolor}
 
+\pagestyle{empty} % no page numbers
 \setlength{\parindent}{0pt} % indenting the paragraphs looks silly here
 
 % LISTINGS SETTING
@@ -13,9 +14,11 @@
 \lstset{ %
   backgroundcolor=\color{hutton_lightgreen},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
   basicstyle=\small\ttfamily,        % the size of the fonts that are used for the code
-  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breakatwhitespace=true,          % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
+  abovecaptionskip=-12pt,          % not using captions, so this avoids wasting vertical space
+  belowcaptionskip=0pt,
   commentstyle=\color{red},    % comment style
   deletekeywords={...},            % if you want to delete keywords from the given language
   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
@@ -40,14 +43,15 @@
 
 \begin{document}
 
-\section*{Introduction To Bioinformatics -- Afternoon session}
+\section*{Introduction To Bioinformatics -- Command summary}
 
-You should have already created a copy of the data files under your home directory (tilde shorthand):
+This sheet is just a summary of the commands you will be running, which are described in the slides.
+You should have already created a copy of the data files under your home directory (shorthand tilde):
 \begin{lstlisting}[language=bash]
 $ cp -r /mnt/shared/public/training/introToBioinformatics/ ~/
 \end{lstlisting}
 
-Check the afternoon files exist with:
+Check the session's files exist with:
 \begin{lstlisting}[language=bash]
 $ ls ~/introToBioinformatics/data/
 ex1_expression  ex2_blast  workshop
@@ -114,9 +118,12 @@ $ blastp -h
 ...
 \end{lstlisting}
 
+\pagebreak
+
 Minimal example:
 
 \begin{lstlisting}[language=bash]
+$ cd ~/introToBioinformatics/data/ex2_blast/
 $ blastp -query query.fasta -db dbA -out my_output.txt
 \end{lstlisting}
 
@@ -136,10 +143,71 @@ $ blastp -query query.fasta -db dbA -out my_output.txt -evalue 1e-5
 
 \section*{Part 3: Genome Annotation Workshop}
 
+\subsection*{Gene Prediction}
+
 \begin{lstlisting}[language=bash]
 $ cd ~/introToBioinformatics/data/workshop/
 $ ls *.fasta
 chrA.fasta      chrB.fasta      chrC.fasta      chrD.fasta
+$ head -n 3 chrA.fasta
+$ head -n 3 chrA_contigs.gff
+\end{lstlisting}
+
+% \begin{lstlisting}[language=bash]
+% $ art &
+% \end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ build-icm -r NC_004547.icm < NC_004547.ffn
+$ glimmer3 -o 50 -g 110 -t 30 chrA.fasta NC_004547.icm chrA_glimmer3
+$ head -n 4 chrA_glimmer3.predict
+$ python glimmer_to_gff.py chrA_glimmer3.predict
+$ head -n 3 chrA_glimmer3.gff
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ prodigal -f gff -o chrA_prodigal.gff -i chrA.fasta
+$ head -n 6 chrA_prodigal.gff
+\end{lstlisting}
+
+\subsection*{Genome Comparison (with BLAST+)}
+
+\begin{lstlisting}[language=bash]
+$ blastn -query chrA.fasta -subject NC_004547.fna -out chrA_megablast_Pba.tab -outfmt 6
+$ head -n 3 chrA_megablast_Pba.tab
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ blastn -query chrA.fasta -subject NC_004547.fna -out chrA_blastn_Pba.tab -outfmt 6 -task blastn
+$ head -n 3 chrA_blastn_Pba.tab
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ wc chrA_megablast_Pba.tab
+$ wc chrA_blastn_Pba.tab
+\end{lstlisting}
+
+% \begin{lstlisting}[language=bash]
+% $ act &
+% \end{lstlisting}
+
+\subsection*{Genome Comparison (with MUMmer)}
+
+\begin{lstlisting}[language=bash]
+$ cd ~/introToBioinformatics/data/workshop
+$ mkdir nucmer_out
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ nucmer --prefix=nucmer_out/chrA_NC_004547 chrA.fasta NC_004547.fna
+$ delta-filter -q nucmer_out/chrA_NC_004547.delta > nucmer_out/chrA_NC_004547.filter
+$ show-coords -rcl nucmer_out/chrA_NC_004547.filter > nucmer_out/chrA_NC_004547_filtered.coords
+$ head nucmer_out/chrA_NC_004547_filtered.coords
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+$ tail -n +6 nucmer_out/chrA_NC_004547_filtered.coords | awk '{print $7" "$10" "$1" "$2" "$12" "$4" "$5" "$13}' > chrA_mummer_NC_004547.crunch
+$ head chrA_mummer_NC_004547.crunch
 \end{lstlisting}
 
 \end{document}
