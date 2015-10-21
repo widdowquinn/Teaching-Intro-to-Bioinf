@@ -26,8 +26,8 @@ For other options, refer to the `presentation/README.md` file.
 
 ## Contributors
 
-* [Leighton Pritchard]()
-* [Peter Cock]
+* [Leighton Pritchard](https://github.com/widdowquinn)
+* [Peter Cock](https://github.com/peterjc)
 * Sue Jones
 
 ## Licensing
