@@ -1,0 +1,7 @@
+# BLASTP 2.2.30+
+# Query: query protein sequence
+# Database: dbC
+# Fields: query id, subject id, % identity, alignment length, mismatches, gap opens, q. start, q. end, s. start, s. end, evalue, bit score
+# 1 hits found
+query	PITG_08491T0	31.88	69	43	2	106	174	40	104	4e-06	34.3
+# BLAST processed 1 queries

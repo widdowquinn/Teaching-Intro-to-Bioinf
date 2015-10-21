@@ -1,0 +1,94 @@
+BLASTP 2.2.30+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for composition-based statistics: Alejandro A. Schaffer,
+L. Aravind, Thomas L. Madden, Sergei Shavirin, John L. Spouge, Yuri
+I. Wolf, Eugene V. Koonin, and Stephen F. Altschul (2001),
+"Improving the accuracy of PSI-BLAST protein database searches with
+composition-based statistics and other refinements", Nucleic Acids
+Res. 29:2994-3005.
+
+
+
+Database: dbC
+           1 sequences; 486 total letters
+
+
+
+Query= query protein sequence
+
+Length=400
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  PITG_08491T0 Phytophthora infestans T30-4 choline transporter-l...  34.3    4e-06
+
+
+> PITG_08491T0 Phytophthora infestans T30-4 choline transporter-like 
+protein (441 aa)
+Length=486
+
+ Score = 34.3 bits (77),  Expect = 4e-06, Method: Compositional matrix adjust.
+ Identities = 22/69 (32%), Positives = 38/69 (55%), Gaps = 4/69 (6%)
+
+Query  106  EVILPMMYQFALKPSFADVINDYKPYSKHTAGVSDQELKGEATTWMLADKNSRMKAFLSQ  165
+            E+++PM+Y   L   F   ++ Y P   HTA ++  EL+G   T ++A+  S +  F ++
+Sbjct  40   ELMVPMLYSLYLVVLFHLPVSAYYP---HTASMTAHELQGAVITILVAETPSIIIQF-AK  95
+
+Query  166  IKTKSNSSE  174
+              T SN S+
+Sbjct  96   CHTSSNISQ  104
+
+
+ Score = 15.0 bits (27),  Expect = 5.4, Method: Compositional matrix adjust.
+ Identities = 10/34 (29%), Positives = 14/34 (41%), Gaps = 0/34 (0%)
+
+Query  243  PYNEVQTDKMRRISTGGKQQGKSILKPDPTVTEQ  276
+            P N V   K    +  G +   S  +  PTV +Q
+Sbjct  451  PVNPVPDYKYFWDAAMGDKGYNSFEQYKPTVEQQ  484
+
+
+ Score = 14.6 bits (26),  Expect = 8.0, Method: Compositional matrix adjust.
+ Identities = 5/12 (42%), Positives = 5/12 (42%), Gaps = 0/12 (0%)
+
+Query  300  YPVPMGMIVHSL  311
+            YP    M  H L
+Sbjct  63   YPHTASMTAHEL  74
+
+
+ Score = 14.2 bits (25),  Expect = 8.5, Method: Compositional matrix adjust.
+ Identities = 6/15 (40%), Positives = 8/15 (53%), Gaps = 0/15 (0%)
+
+Query  245  NEVQTDKMRRISTGG  259
+            NE+ T    R+S  G
+Sbjct  359  NEMFTYAFNRLSEHG  373
+
+
+
+Lambda      K        H        a         alpha
+   0.316    0.130    0.372    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 167072
+
+
+  Database: dbC
+    Posted date:  May 9, 2014  10:38 AM
+  Number of letters in database: 486
+  Number of sequences in database:  1
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40
