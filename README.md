@@ -6,6 +6,17 @@ This repository contains the source code and images for slides and exercises for
 
 This repository was split off from the initial repository at [https://github.com/widdowquinn/Teaching](https://github.com/widdowquinn/Teaching)
 
+## Building slides and handouts
+
+Change to the `presentation` directory, and issue one of the `make` commands:
+
+* `make slides`: Make `.pdf` slides
+* `make handouts`: Make `.pdf` handouts
+* `make all`: Make slides and handouts
+
+For other options, refer to the `presentation/README.md` file.
+
+
 ## Subdirectories
 
 * `data`: data for exercise and workshop parts of the course
