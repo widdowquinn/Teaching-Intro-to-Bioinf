@@ -24,6 +24,12 @@ For other options, refer to the `presentation/README.md` file.
 * `data`: data for exercise and workshop parts of the course
 * `presentation`: source code for presentation slides
 
+## Contributors
+
+* [Leighton Pritchard]()
+* [Peter Cock]
+* Sue Jones
+
 ## Licensing
 
 Copyright 2014-2015 by The James Hutton Institute, Dundee, UK. All rights reserved.

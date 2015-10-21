@@ -42,6 +42,12 @@ The `handoutWithNotes.sty` LaTeX style file is used for handout styles.
 * `images`: images for slides
 * `sections`: source `.tex` files for presentation sections
 
+## Contributors
+
+* [Leighton Pritchard](https://github.com/widdowquinn)
+* [Peter Cock](https://github.com/peterjc)
+* Sue Jones
+
 ## Licensing
 
 Copyright 2014-2015 by The James Hutton Institute, Dundee, UK. All rights reserved.
