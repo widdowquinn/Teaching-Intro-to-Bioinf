@@ -1,5 +1,7 @@
 # README.md - presentation
 
+![../images/JHI_STRAP_Web.png](../images/JHI_STRAP_Web.png)
+
 ## Overview 
 
 This directory contains source LaTeX to produce `.pdf` slides and handouts for the Introduction to Bioinformatics course. A `Makefile` is provided for convenience.

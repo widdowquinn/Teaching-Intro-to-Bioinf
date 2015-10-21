@@ -1,5 +1,7 @@
 # README.md - Teaching-Intro-to-Bioinf
 
+![images/JHI_STRAP_Web.png](images/JHI_STRAP_Web.png)
+
 ## Overview
 
 This repository contains the source code and images for slides and exercises for the Introduction to Bioinformatics course written and presented at the James Hutton Institute Dundee, by Leighton Pritchard and Peter Cock.
