@@ -1,0 +1,8 @@
+# Intermediate/output files from exercises
+*.icm
+chr[A-D]_blastn_Pba.tab
+chr[A-D]_glimmer3.detail
+chr[A-D]_glimmer3.gff
+chr[A-D]_glimmer3.predict
+chr[A-D]_megablast_Pba.tab
+chr[A-D]_prodigal.gff
