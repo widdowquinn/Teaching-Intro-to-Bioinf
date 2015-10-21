@@ -1,6 +1,6 @@
 # README.md - Teaching-Intro-to-Bioinf
 
-![images/JHI_STRAP_Web.png](images/JHI_STRAP_Web.png)
+![images/JHI_STRAP_Web.png](images/JHI_STRAP_Web.png =200x)
 
 ## Overview
 
