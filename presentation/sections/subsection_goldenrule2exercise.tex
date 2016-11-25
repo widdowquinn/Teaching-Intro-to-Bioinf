@@ -16,7 +16,6 @@
     \item You are in group A, B, C or D - this decides your database\\
     \texttt{dbA}, \texttt{dbB}, \texttt{dbC}, \texttt{dbD}
     \item You will use \texttt{BLAST} at the command-line to analyse your data
-    \item You will use \texttt{script} at the command-line to record your work
   \end{itemize}
 \end{frame}
 
@@ -26,46 +25,11 @@
   \framesubtitle{Starting \texttt{script}}    
   \begin{itemize}
     \item Change directory to where Exercise 2 data is located
-    \item Start recording your actions by using \texttt{script}
+    \item Run \texttt{BLAST} with the appropriate database
   \end{itemize}
 \begin{lstlisting}[language=bash]
 $ cd ../ex2_blast
-$ script
-Script started, output file is typescript
-\end{lstlisting}    
-\end{frame}
-
-% TODO? Move the cd ../ex2_blast to before the script command?
-% That way we are in the right directory after exiting script...
-
-% [fragile] frames must end with \end{frame} directly following a newline, or they break!
-\begin{frame}[fragile]
-  \frametitle{Exercise 2}
-  \framesubtitle{Running \texttt{BLAST}}
-  \begin{itemize}
-    \item Run \texttt{BLAST} with the appropriate database
-    \item Exit \texttt{script}
-  \end{itemize}
-\begin{lstlisting}[language=bash]
 $ blastp -num_alignments 1 -num_descriptions 1 -query query.fasta -db dbA
-...
-$ exit
-exit
-Script done, output file is typescript
-\end{lstlisting}    
-\end{frame}
-
-% [fragile] frames must end with \end{frame} directly following a newline, or they break!
-\begin{frame}[fragile]
-  \frametitle{Exercise 2}
-  \framesubtitle{Viewing \texttt{script} output}
-  \begin{itemize}
-    \item You can view the \texttt{typescript} file with \texttt{cat}
-  \end{itemize}
-\begin{lstlisting}[language=]
-$ cat typescript
-Script started on Wed Dec 10 11:48:06 2014
-[username@hostname ex2_blast]$ blastp -num_alignments 1 -num_descriptions 1 -query query.fasta -db dbA
 BLASTP 2.2.30+
 
 
